@@ -1,6 +1,12 @@
 # API Keys
 keys.py
 
+# Current day
+day.txt
+
+# Actions and corresponding days
+actions.csv
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

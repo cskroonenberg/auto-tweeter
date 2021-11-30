@@ -12,14 +12,14 @@ ACCESS_KEY = keys.ACCESS_KEY
 ACCESS_SECRET = keys.ACCESS_SECRET
 BEARER_TOKEN = keys.BEARER_TOKEN
 
-# Your username
-username = 'og_ron_c_'
+# Your Twitter username (e.g., 'cskberg')
+username = ''
 
 # CSV file where actions are stored (see sample_actions.csv)
 actions_url = "actions.csv"
 
-# Thing you're quitting
-addiction_str = 'nicotine'
+# Thing you're quitting (e.g., 'nicotine')
+addiction_str = ''
 
 auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
 auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)

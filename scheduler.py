@@ -1,3 +1,5 @@
+# Author: Caden Kroonenberg
+# Date: 11-29-21
 import schedule
 import time
 

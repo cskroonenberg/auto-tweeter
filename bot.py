@@ -1,7 +1,7 @@
 # Author: Caden Kroonenberg
 # Date: 11-29-21
 
-from pandas import read_csv
+import csv
 import keys
 import tweepy
 
@@ -34,10 +34,20 @@ id = user.id
 day_file = open(r"day.txt", "r+")
 day = int(day_file.read()) + 1
 
-# load actions
-names = ['action']
-dataset = read_csv(actions_url, names=names)
-actions = dataset.values[:,0]
+# reading csv file
+with open(actions_url, 'r') as csvfile:
+    actions = []
+    # creating a csv reader object
+    csvreader = csv.reader(csvfile)
+  
+    # extracting each data row one by one
+    for row in csvreader:
+        actions.append(row[0])
+  
+    # get total number of actions
+    if csvreader.line_num < day:
+        print("Need new content!")
+
 action = str(actions[day])
 
 # Create tweet string

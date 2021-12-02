@@ -1,11 +1,8 @@
-# API Keys
-keys.py
+# API Keys, actions, Quote RT ID, day of quitting, etc. all stored here
+data/
 
-# Current day
-day.txt
-
-# Actions and corresponding days
-actions.csv
+# Place for testing API functionality
+test/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

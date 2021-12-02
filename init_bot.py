@@ -24,7 +24,7 @@ if __name__ == "__main__":
         f.write("0")
         f.close()
     
-    with open('data/keys_test.py', 'w') as f:
+    with open('data/keys.py', 'w') as f:
         consumer_key = input("What's your twitter consumer key?:\n>> ")
         print("")
         f.write("CONSUMER_KEY = \'" + consumer_key + "\'\n")

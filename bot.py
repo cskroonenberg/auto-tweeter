@@ -34,6 +34,9 @@ id = user.id
 day_file = open(r"day.txt", "r+")
 day = int(day_file.read()) + 1
 
+qrt_file = open(r"qrt.txt", "r+")
+to_quote_id = qrt_file.read()
+
 # reading csv file
 with open(actions_url, 'r') as csvfile:
     actions = []
@@ -63,3 +66,12 @@ day_file.seek(0)
 day_file.write(str(day))
 day_file.truncate()
 day_file.close()
+
+most_recent_tweet = client.get_users_tweets(id, max_results=1)[0][0]
+most_recent_id = most_recent_tweet.id
+
+# Overwrite qrt ID in qrt file
+qrt_file.seek(0)
+qrt_file.write(str(most_recent_id)) # TODO: Update ID
+qrt_file.truncate()
+qrt_file.close()

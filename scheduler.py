@@ -3,13 +3,12 @@ import time
 
 # Execute bot.py
 def my_func():
-    current_time = time.ctime()
-    print("Time: " + current_time)
+    print(time.ctime())
     exec(open("bot.py").read())
 
-# Execute interval (every day at 10 PM)
-schedule.every().day.at("22:00").do(my_func)
-
+# Execute interval (every day at 12 PM)
+schedule.every().day.at("12:00").do(my_func)
+print(time.ctime())
 while 1:
     schedule.run_pending()
     time.sleep(1)

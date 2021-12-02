@@ -75,15 +75,20 @@ if __name__ == "__main__":
     # Create tweet string
     to_tweet = "Day " + str(day) + " no " + addiction_str + ": " + action
 
-    # Tweet day and action
+    # Send tweet
     print("Tweeting \"" + to_tweet + "\"")
-    if qrt_id == 0:
+    if qrt_id == 0: # Root tweet
         client.create_tweet(text=to_tweet)
-    else:
+    else: # Quote RT
         client.create_tweet(text=to_tweet, quote_tweet_id=qrt_id)
-    playsound.playsound("assets/twit_notif.mp3")
+
+    # Play tweet sound
+    if info.TWEET_SOUNDS:
+        playsound.playsound("assets/twit_notif.mp3")
+    
     print("Tweet sent!")
 
+    # Store ID of last tweet to use for Quote RTing next time.
     most_recent_tweet = client.get_users_tweets(id, max_results=5)[0][0]
     most_recent_id = most_recent_tweet.id
 

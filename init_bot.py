@@ -43,6 +43,17 @@ if __name__ == "__main__":
         print("")
         f.write("ACCESS_SECRET = \'" + access_secret + "\'\n")
 
+        sounds = ""
+        while sounds != "y" and sounds != "n":
+            sounds = input("Do you want your twitter bot to make sounds when it tweets?: (Y)es or (N)o\n>> ").lower()
+            if sounds != "y" and sounds != "n":
+                print("\n\tERROR: Please input \'Y\' for Yes or \'N\' for No.\n")
+        print("")
+        if sounds == "Y":
+            f.write("\nTWEET_SOUNDS = True\n")
+        else:
+            f.write("\nTWEET_SOUNDS = False\n")
+
         f.close()
 
     with open('data/qrt.txt', 'w') as f:

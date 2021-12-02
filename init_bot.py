@@ -59,6 +59,8 @@ if __name__ == "__main__":
     with open('data/qrt.txt', 'w') as f:
         f.write("0")
         f.close()
-
-    with open('tweets.csv', 'w') as f:
-        f.close()
+    try:
+        with open('tweets.csv', 'x') as f:
+            f.close()
+    except:
+        pass

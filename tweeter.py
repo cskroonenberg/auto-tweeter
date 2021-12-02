@@ -78,17 +78,15 @@ if __name__ == "__main__":
     # Tweet day and action
     print("Tweeting \"" + to_tweet + "\"")
     if qrt_id == 0:
-        print("*tweet*")
-        #client.create_tweet(text=to_tweet)
+        client.create_tweet(text=to_tweet)
     else:
-        print("*qrtweet*")
-        #client.create_tweet(text=to_tweet, quote_tweet_id=qrt_id)
+        client.create_tweet(text=to_tweet, quote_tweet_id=qrt_id)
     playsound.playsound("assets/twit_notif.mp3")
     print("Tweet sent!")
 
     most_recent_tweet = client.get_users_tweets(id, max_results=5)[0][0]
     most_recent_id = most_recent_tweet.id
-    quit()
+
     # Set day and QRT values for next script execution
     overwrite("data/qrt.txt", most_recent_id)
     overwrite("data/day.txt", day)

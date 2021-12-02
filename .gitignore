@@ -4,6 +4,9 @@ data/
 # Place for testing API functionality
 test/
 
+# Tweets
+tweets.csv
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

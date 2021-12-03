@@ -8,17 +8,10 @@ if __name__ == "__main__":
     if not os.path.isdir(mypath):
         os.makedirs(mypath)
 
-    with open('data/info.py', 'w') as f:
-        addiction = input("What addiction are you quitting?:\n>> ")
-        print("")
-        f.write("ADDICTION = \'" + addiction + "\'\n\n")
+    with open('data/tweet_no.txt', 'w') as f:
+        f.write("0")
 
-        with open('data/day.txt', 'w') as d:
-            day = input("How many days have passed since you first quit? (If today's your first day, use 0):\n>> ")
-            print("")
-            d.write(day)
-            d.close()
-        
+    with open('data/info.py', 'w') as f:
         username = input("What's your twitter username?:\n>> ")
         print("")
         f.write("USERNAME = \'" + username + "\'\n\n")
@@ -49,7 +42,7 @@ if __name__ == "__main__":
             if sounds != "y" and sounds != "n":
                 print("\n\tERROR: Please input \'Y\' for Yes or \'N\' for No.\n")
         print("")
-        if sounds == "Y":
+        if sounds == "y":
             f.write("\nTWEET_SOUNDS = True\n")
         else:
             f.write("\nTWEET_SOUNDS = False\n")

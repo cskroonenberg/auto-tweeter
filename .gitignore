@@ -1,8 +1,5 @@
-# API Keys, actions, Quote RT ID, day of quitting, etc. all stored here
+# API Keys, tweets, Quote RT ID, etc. all stored here
 data/
-
-# Place for testing API functionality
-test/
 
 # Tweets
 tweets.csv

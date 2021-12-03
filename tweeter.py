@@ -41,9 +41,6 @@ if __name__ == "__main__":
     # CSV file where actions are stored (see sample_actions.csv)
     actions_url = "tweets.csv"
 
-    # Thing you're quitting
-    addiction_str = info.ADDICTION
-
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
     auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
     api = tweepy.API(auth)
@@ -53,7 +50,7 @@ if __name__ == "__main__":
     id = user.id
 
     # Fetch day and QRT values
-    day = int(fetch_val("data/day.txt")) + 1
+    tweet_no = int(fetch_val("data/tweet_no.txt"))
     qrt_id = int(fetch_val("data/qrt.txt"))
 
     # reading csv file
@@ -67,13 +64,10 @@ if __name__ == "__main__":
             actions.append(row[0])
     
         # get total number of actions
-        if csvreader.line_num < day:
+        if csvreader.line_num < tweet_no:
             print("Need new content!")
 
-    action = str(actions[day])
-
-    # Create tweet string
-    to_tweet = "Day " + str(day) + " no " + addiction_str + ": " + action
+    to_tweet = str(actions[tweet_no])
 
     # Send tweet
     print("Tweeting \"" + to_tweet + "\"")
@@ -94,4 +88,4 @@ if __name__ == "__main__":
 
     # Set day and QRT values for next script execution
     overwrite("data/qrt.txt", most_recent_id)
-    overwrite("data/day.txt", day)
+    overwrite("data/tweet_no.txt", tweet_no+1)

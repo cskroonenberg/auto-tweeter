@@ -27,7 +27,7 @@ Almost done!
 Running that script will have created a file called ``tweets.csv``. Edit this file to with content for tweets (see below). Make sure it's you come back to it often to keep adding new messages!
 ```
 #tweets.csv
-"Throwback Thursday!!!!"
+"Throwback Thursday!!!! Can't wait for Thursday Night Football."
 "It's Friday y'all!!!! #TGIF"
 "Ladies and gentlemen, the weekend"
 ```

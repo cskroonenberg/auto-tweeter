@@ -6,6 +6,7 @@ import data.info as info
 import tweepy
 import os
 import playsound
+import time
 
 def fetch_val(file_name):
     if not os.path.isfile(file_name):
@@ -83,6 +84,7 @@ if __name__ == "__main__":
     print("Tweet sent!")
 
     # Store ID of last tweet to use for Quote RTing next time.
+    time.sleep(15) # Sleep so QRT ID can be safely acquired
     most_recent_tweet = client.get_users_tweets(id, max_results=5)[0][0]
     most_recent_id = most_recent_tweet.id
 

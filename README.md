@@ -6,7 +6,7 @@ Twitter bot designed to tweet things daily for the user.
 
 To get the bot started, install the requirements
 ```
-pip3 install -r requirements
+pip3 install -r requirements.txt
 ```
 Once that's done, you'll need to set up a [Twitter](https://twitter.com/cskberg) profile (if you don't already have one). Feel free to give me a follow if you want ;) .
 

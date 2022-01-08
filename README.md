@@ -1,12 +1,12 @@
-# quit-bot
+# auto-tweeter
 
-Twitter bot designed to tweet things a user experiences daily as they drop an addiction.
+Twitter bot designed to tweet things daily for the user.
 
 ## Initialization ##
 
 To get the bot started, install the requirements
 ```
-pip3 install -r requirements
+pip3 install -r requirements.txt
 ```
 Once that's done, you'll need to set up a [Twitter](https://twitter.com/cskberg) profile (if you don't already have one). Feel free to give me a follow if you want ;) .
 
@@ -17,9 +17,8 @@ After you have your API keys, it's <i>almost</i> time to get Tweeting. But first
 python3 init_bot.py
 ```
 This script will ask you a few questions like:
-* What is your addiction?
-* How many days has it been since you dropped said addiction?
 * What is your Twitter username?
+* Do you want tweet sounds to play when tweets are sent?
 
 It will also ask you for your Twitter API keys. All this information will be all stored in files in the data directory, they are <b>not</b> uploaded anywhere.
 
@@ -28,10 +27,9 @@ Almost done!
 Running that script will have created a file called ``tweets.csv``. Edit this file to with content for tweets (see below). Make sure it's you come back to it often to keep adding new messages!
 ```
 #tweets.csv
-"I'm hearing sounds",
-"I'm feeling better",
-"I need a NAP!",
-"Time to invent a new color"
+"Throwback Thursday!!!! Can't wait for Thursday Night Football."
+"It's Friday y'all!!!! #TGIF"
+"Ladies and gentlemen, the weekend"
 ```
 Each of these rows will be used for tweets.
 The final result should look like this:

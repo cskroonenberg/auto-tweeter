@@ -4,8 +4,9 @@ Twitter bot designed to tweet things daily for the user.
 
 ## Initialization ##
 
-To get the bot started, install the requirements
+To get the bot started, navigate to the directory you want the project stored, clone the repository, and install the requirements
 ```
+git clone https://github.com/cskroonenberg/auto-tweeter
 pip3 install -r requirements.txt
 ```
 Once that's done, you'll need to set up a [Twitter](https://twitter.com/cskberg) profile (if you don't already have one). Feel free to give me a follow if you want ;) .

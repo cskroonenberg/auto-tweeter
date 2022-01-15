@@ -4,8 +4,10 @@ Twitter bot designed to tweet things daily for the user.
 
 ## Initialization ##
 
-To get the bot started, install the requirements
+To get the bot started, navigate to the directory you want the project stored, clone the repository, and install the requirements
 ```
+git clone https://github.com/cskroonenberg/auto-tweeter
+cd auto-tweeter
 pip3 install -r requirements.txt
 ```
 Once that's done, you'll need to set up a [Twitter](https://twitter.com/cskberg) profile (if you don't already have one). Feel free to give me a follow if you want ;) .
@@ -34,7 +36,7 @@ Running that script will have created a file called ``tweets.csv``. Edit this fi
 Each of these rows will be used for tweets.
 The final result should look like this:
 <img src="assets/example.jpg">
-One tweet will be tweeted a day.
+One tweet will be tweeted a day. As you can see, the tweet referring to Friday has been Quote Retweeted by the tweet referring to Saturday. (You may also notice that screenshot says 18s on the Quoted Tweet from Friday, this will say 1d when used in production, I just needed to quickly make a screenshot with the sample Tweets I made for this README)
 
 ## Execution ##
 

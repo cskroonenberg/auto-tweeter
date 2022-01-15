@@ -66,7 +66,8 @@ if __name__ == "__main__":
     
         # get total number of actions
         if csvreader.line_num < tweet_no:
-            print("Need new content!")
+            print("Need more things to Tweet!\nExiting...")
+            exit()
 
     to_tweet = str(actions[tweet_no])
 

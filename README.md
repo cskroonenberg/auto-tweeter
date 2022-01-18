@@ -52,3 +52,9 @@ python3 tweeter.py
 ```
 This will do the same thing, but remember to execute the command every day so the program can keep track of your days accurately.
 
+## Tools ##
+
+I created the fetch_tweets script to fetch your most recent 25 tweets as well as the IDs of your most recent tweets. This can be helpful for development purposes.
+```
+python3 fetch_tweets.py
+```

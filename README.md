@@ -35,7 +35,7 @@ Running that script will have created a file called ``tweets.csv``. Edit this fi
 ```
 Each of these rows will be used for tweets.
 The final result should look like this:
-<img src="assets/example.jpg">
+<img src="assets/doc/example.jpg">
 One tweet will be tweeted a day. As you can see, the tweet referring to Friday has been Quote Retweeted by the tweet referring to Saturday. (You may also notice that screenshot says 18s on the Quoted Tweet from Friday, this will say 1d when used in production, I just needed to quickly make a screenshot with the sample Tweets I made for this README)
 
 ## Execution ##

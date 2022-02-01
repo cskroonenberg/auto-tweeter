@@ -80,7 +80,7 @@ if __name__ == "__main__":
 
     # Play tweet sound
     if info.TWEET_SOUNDS:
-        playsound.playsound("assets/twit_notif.mp3")
+        playsound.playsound("assets/sounds/twit_notif.mp3")
     
     print("Tweet sent!")
 

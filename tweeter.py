@@ -33,7 +33,7 @@ def overwrite(file_name, val):
 # function to add to JSON
 def log(new_data, filename='data/log.json'):
     with open(filename,'r+') as file:
-          # First we load existing data into a dict.
+        # First we load existing data into a dict.
         file_data = json.load(file)
         # Join new_data with file_data inside emp_details
         file_data['tweets'].append(new_data)
@@ -41,6 +41,17 @@ def log(new_data, filename='data/log.json'):
         file.seek(0)
         # convert back to json.
         json.dump(file_data, file, indent = 4)
+
+def fetch_qrt():
+    with open("data/log.json",'r+') as file:
+        # Load tweet log:
+        file_data = json.load(file)
+        if len(file_data) == 0: # If no tweets have been tweeted yet:
+            return 0
+        # Return ID of last tweet and close file
+        id = file_data['tweets'][-1]['id']
+        file.close()
+        return id
 
 # Remove a line from a file
 def remove_line(fileName,lineToSkip):
@@ -80,7 +91,7 @@ if __name__ == "__main__":
     id = user.id
 
     # Fetch QRT ID and tweet text
-    qrt_id = int(fetch_val("data/qrt.txt"))
+    qrt_id = fetch_qrt()
     with open("tweets.csv") as f:
         to_tweet = f.readline().rstrip()
 
@@ -110,6 +121,3 @@ if __name__ == "__main__":
         playsound.playsound("assets/sounds/twit_notif.mp3")
     
     print("Tweet sent!")
-
-    # Set day and QRT values for next script execution
-    overwrite("data/qrt.txt", tweet.id)

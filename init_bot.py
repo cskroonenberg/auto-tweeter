@@ -45,10 +45,6 @@ if __name__ == "__main__":
             f.write("\nTWEET_SOUNDS = False\n")
 
         f.close()
-
-    with open('data/qrt.txt', 'w') as f:
-        f.write("0")
-        f.close()
     try:
         with open('tweets.csv', 'x') as f:
             f.close()

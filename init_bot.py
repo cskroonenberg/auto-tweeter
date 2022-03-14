@@ -8,9 +8,6 @@ if __name__ == "__main__":
     if not os.path.isdir(mypath):
         os.makedirs(mypath)
 
-    with open('data/tweet_no.txt', 'w') as f:
-        f.write("0")
-
     with open('data/info.py', 'w') as f:
         username = input("What's your twitter username?:\n>> ")
         print("")

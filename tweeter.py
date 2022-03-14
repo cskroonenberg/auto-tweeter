@@ -68,8 +68,8 @@ if __name__ == "__main__":
     # Your username
     username = info.USERNAME
 
-    # CSV file where actions are stored (see sample_actions.csv)
-    actions_url = "tweets.csv"
+    # CSV file where tweets are stored (see sample_actions.csv)
+    tweets = "tweets.csv"
 
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
     auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
@@ -79,26 +79,10 @@ if __name__ == "__main__":
     user = client.get_user(username=username)[0]
     id = user.id
 
-    # Fetch day and QRT values
-    tweet_no = int(fetch_val("data/tweet_no.txt"))
+    # Fetch QRT ID and tweet text
     qrt_id = int(fetch_val("data/qrt.txt"))
-
-    # reading csv file
-    with open(actions_url, 'r') as csvfile:
-        actions = []
-        # creating a csv reader object
-        csvreader = csv.reader(csvfile)
-    
-        # extracting each data row one by one
-        for row in csvreader:
-            actions.append(row[0])
-    
-        # get total number of actions
-        if csvreader.line_num < tweet_no:
-            print("Need more things to Tweet!\nExiting...")
-            exit()
-
-    to_tweet = str(actions[tweet_no])
+    with open("tweets.csv") as f:
+        to_tweet = f.readline().rstrip()
 
     # Send tweet
     print("Tweeting \"" + to_tweet + "\"")
@@ -115,7 +99,7 @@ if __name__ == "__main__":
 
     # Log the tweet
     log(log_entry)
-    
+
     # Remove tweet from tweet queue
     remove_line("tweets.csv", 1)
 
@@ -127,4 +111,3 @@ if __name__ == "__main__":
 
     # Set day and QRT values for next script execution
     overwrite("data/qrt.txt", tweet.id)
-    overwrite("data/tweet_no.txt", tweet_no+1)

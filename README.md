@@ -26,12 +26,12 @@ It will also ask you for your Twitter API keys. All this information will be all
 
 Almost done!
 
-Running that script will have created a file called ``tweets.csv``. Edit this file to with content for tweets (see below). Make sure it's you come back to it often to keep adding new messages!
+Running that script will have created a file called ``tweets.csv``. Edit this file to with content for tweets (see below). The bot will Tweet the thing at the top of this file (and then subsequently remove that line from the file after the Tweet has been sent). Make sure it's you come back to it often to keep adding new messages!
 ```
 #tweets.csv
-"Throwback Thursday!!!! Can't wait for Thursday Night Football."
-"It's Friday y'all!!!! #TGIF"
-"Ladies and gentlemen, the weekend"
+Throwback Thursday!!!! Can't wait for Thursday Night Football.
+It's Friday y'all!!!! #TGIF
+Ladies and gentlemen, the weekend
 ```
 Each of these rows will be used for tweets.
 The final result should look like this:
@@ -50,11 +50,11 @@ Alternatively, you could execute the following command every day, manually:
 ```
 python3 tweeter.py
 ```
-This will do the same thing, but remember to execute the command every day so the program can keep track of your days accurately.
 
 ## Tools ##
 
-I created the fetch_tweets script to fetch your most recent 25 tweets as well as the IDs of your most recent tweets. This can be helpful for development purposes.
+I created the `fetch_tweets.py` script to fetch your most recent 25 tweets as well as the IDs of your most recent tweets. This can be helpful for development purposes.
 ```
 python3 fetch_tweets.py
 ```
+Tweets are logged in a file called `log.json`. This can be found in the `data` directory. Tweet content, Tweet ID, Quote Tweet ID, and date-time of tweet are logged.

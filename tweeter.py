@@ -7,6 +7,8 @@ import tweepy
 import os
 import playsound
 import time
+import json
+from datetime import datetime
 
 def fetch_val(file_name):
     if not os.path.isfile(file_name):
@@ -27,6 +29,18 @@ def overwrite(file_name, val):
     file.truncate()
     file.close()
     return val
+
+# function to add to JSON
+def log(new_data, filename='data/log.json'):
+    with open(filename,'r+') as file:
+          # First we load existing data into a dict.
+        file_data = json.load(file)
+        # Join new_data with file_data inside emp_details
+        file_data['tweets'].append(new_data)
+        # Sets file's current position at offset.
+        file.seek(0)
+        # convert back to json.
+        json.dump(file_data, file, indent = 4)
 
 if __name__ == "__main__":
     # Init twitter user
@@ -74,9 +88,17 @@ if __name__ == "__main__":
     # Send tweet
     print("Tweeting \"" + to_tweet + "\"")
     if qrt_id == 0: # Root tweet
-        client.create_tweet(text=to_tweet)
+        tweet = client.create_tweet(text=to_tweet)
     else: # Quote RT
-        client.create_tweet(text=to_tweet, quote_tweet_id=qrt_id)
+        tweet = client.create_tweet(text=to_tweet, quote_tweet_id=qrt_id)
+
+    log_entry = {"text": tweet.text,
+     "date-time": str(datetime.now()),
+     "id": tweet.id,
+     "quote_id": qrt_id
+    }
+
+    log(log_entry)
 
     # Play tweet sound
     if info.TWEET_SOUNDS:
@@ -84,11 +106,6 @@ if __name__ == "__main__":
     
     print("Tweet sent!")
 
-    # Store ID of last tweet to use for Quote RTing next time.
-    time.sleep(15) # Sleep so QRT ID can be safely acquired
-    most_recent_tweet = client.get_users_tweets(id, max_results=5)[0][0]
-    most_recent_id = most_recent_tweet.id
-
     # Set day and QRT values for next script execution
-    overwrite("data/qrt.txt", most_recent_id)
+    overwrite("data/qrt.txt", tweet.id)
     overwrite("data/tweet_no.txt", tweet_no+1)

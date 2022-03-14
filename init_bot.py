@@ -57,3 +57,9 @@ if __name__ == "__main__":
             f.close()
     except:
         pass
+    try:
+        with open('log.json', 'x') as f:
+            f.write("{\n\t\"tweets\": []\n}")
+            f.close()
+    except:
+        pass

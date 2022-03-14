@@ -102,12 +102,10 @@ if __name__ == "__main__":
     else: # Quote RT
         tweet = client.create_tweet(text=to_tweet, quote_tweet_id=qrt_id).data
 
-    print(tweet)
-
-    log_entry = {"text": tweet.text,
+    log_entry = {"text": tweet['text'],
      "date-time": str(datetime.now()),
-     "id": tweet.id,
-     "quote_id": qrt_id
+     "id": int(tweet['id']),
+     "quote_id": int(qrt_id)
     }
 
     # Log the tweet

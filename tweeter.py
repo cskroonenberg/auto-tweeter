@@ -42,6 +42,21 @@ def log(new_data, filename='data/log.json'):
         # convert back to json.
         json.dump(file_data, file, indent = 4)
 
+# Remove a line from a file
+def remove_line(fileName,lineToSkip):
+    with open(fileName,'r') as read_file:
+        lines = read_file.readlines()
+
+    currentLine = 1
+    with open(fileName,'w') as write_file:
+        for line in lines:
+            if currentLine == lineToSkip:
+                pass
+            else:
+                write_file.write(line)
+	
+            currentLine += 1
+
 if __name__ == "__main__":
     # Init twitter user
     CONSUMER_KEY = info.CONSUMER_KEY
@@ -98,7 +113,11 @@ if __name__ == "__main__":
      "quote_id": qrt_id
     }
 
+    # Log the tweet
     log(log_entry)
+    
+    # Remove tweet from tweet queue
+    remove_line("tweets.csv", 1)
 
     # Play tweet sound
     if info.TWEET_SOUNDS:

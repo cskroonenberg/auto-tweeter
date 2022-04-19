@@ -64,6 +64,13 @@ def tweet():
     with open("tweets.csv") as f:
         to_tweet = f.readline().rstrip()
 
+    # Return early if tweets.csv is empty
+    if to_tweet == "":
+        print('The tweets.csv file is empty - no Tweet sent today.')
+        if info.TEXT_UPDATES:
+            text_client.send_text('The tweets.csv file is empty - no Tweet sent today.')
+        return to_tweet
+
     # Send tweet
     print("Tweeting \"" + to_tweet + "\"")
     if qrt_id == 0: # Root tweet
@@ -86,11 +93,12 @@ def tweet():
     if info.TWEET_SOUNDS:
         playsound.playsound("assets/sounds/twit_notif.mp3")
     
+    if info.TEXT_UPDATES:
+        text_client.send_text('just Tweeted \"' + to_tweet + '\"')
+
     print("Tweet sent!")
     return to_tweet
 
 # Send Tweet manually by executing this Python script
 if __name__ == "__main__":
-    body = tweet()
-    if info.TEXT_UPDATES:
-        text_client.send_text('just Tweeted \"' + body + '\"')
+    tweet()

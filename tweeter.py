@@ -9,6 +9,7 @@ import playsound
 import time
 import json
 from datetime import datetime
+import text_client
 
 def fetch_val(file_name):
     if not os.path.isfile(file_name):
@@ -68,7 +69,7 @@ def remove_line(fileName,lineToSkip):
 	
             currentLine += 1
 
-if __name__ == "__main__":
+def tweet():
     # Init twitter user
     CONSUMER_KEY = info.CONSUMER_KEY
     CONSUMER_SECRET = info.CONSUMER_SECRET
@@ -119,3 +120,10 @@ if __name__ == "__main__":
         playsound.playsound("assets/sounds/twit_notif.mp3")
     
     print("Tweet sent!")
+    return to_tweet
+
+# Send Tweet manually by executing this Python script
+if __name__ == "__main__":
+    body = tweet()
+    if info.TEXT_UPDATES:
+        text_client.send_text(body)

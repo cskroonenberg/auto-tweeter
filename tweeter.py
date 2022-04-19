@@ -126,4 +126,4 @@ def tweet():
 if __name__ == "__main__":
     body = tweet()
     if info.TEXT_UPDATES:
-        text_client.send_text(body)
+        text_client.send_text('just Tweeted \"' + body + '\"')

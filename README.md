@@ -1,6 +1,6 @@
 # auto-tweeter
 
-Twitter bot designed to tweet things daily for the user.
+Twitter bot designed to tweet things daily for the user with text updates through Twilio's SMS Messaging API
 
 ## Initialization ##
 
@@ -14,6 +14,8 @@ Once that's done, you'll need to set up a [Twitter](https://twitter.com/cskberg)
 
 Then follow the steps at this [link](https://developer.twitter.com/en/docs/twitter-api/getting-started/getting-access-to-the-twitter-api) to get access to Twitter API keys (make sure these keys grant read and write access. See more [here](https://developer.twitter.com/en/docs/apps/app-permissions)).
 
+If you want to set up SMS updates, you'll need to visit this [link](https://www.twilio.com/docs/sms/quickstart/python). This is <b>optional</b>. The bot will run fine without text updates, but I find it to be a useful feature for tracking when the bot does things.
+
 After you have your API keys, it's <i>almost</i> time to get Tweeting. But first, run the following command:
 ```
 python3 init_bot.py
@@ -21,12 +23,13 @@ python3 init_bot.py
 This script will ask you a few questions like:
 * What is your Twitter username?
 * Do you want tweet sounds to play when tweets are sent?
+* Do you want SMS updates?
 
-It will also ask you for your Twitter API keys. All this information will be all stored in files in the data directory, they are <b>not</b> uploaded anywhere.
+This script will also ask you for your Twitter API keys (and your Twilio API keys and phone number if you chose to set that up). All this information will be all stored in files in the data directory, which is included in the `.gitignore` file, they are <b>not</b> uploaded anywhere.
 
 Almost done!
 
-Running that script will have created a file called ``tweets.csv``. Edit this file to with content for tweets (see below). The bot will Tweet the thing at the top of this file (and then subsequently remove that line from the file after the Tweet has been sent). Make sure it's you come back to it often to keep adding new messages!
+Running that script will have created a file called ``tweets.csv``. Edit this file with content for tweets (see below). The bot will Tweet the thing at the top of this file (and then subsequently remove that line from the file after the Tweet has been sent). Make sure you come back to it often to keep adding new tweets to the queue!
 ```
 #tweets.csv
 Throwback Thursday!!!! Can't wait for Thursday Night Football.
@@ -35,9 +38,12 @@ Ladies and gentlemen, the weekend
 ```
 Each of these rows will be used for tweets.
 The final result should look like this:
-<img src="assets/doc/example.jpg">
+<img src="assets/doc/example_tweet.jpg">
+
 One tweet will be tweeted a day. As you can see, the tweet referring to Friday has been Quote Retweeted by the tweet referring to Saturday. (You may also notice that screenshot says 18s on the Quoted Tweet from Friday, this will say 1d when used in production, I just needed to quickly make a screenshot with the sample Tweets I made for this README)
 
+If you opted to receive SMS updates, you will get updates daily:
+<img src="assets/doc/example_SMS.jpg"
 ## Execution ##
 
 So how do you run the program? Using the following command:

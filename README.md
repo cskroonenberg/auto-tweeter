@@ -1,6 +1,6 @@
 # auto-tweeter
 
-Twitter bot designed to tweet things daily for the user with optional text updates through Twilio's SMS Messaging API
+Twitter bot designed to tweet things daily for the user with optional SMS updates through Twilio's SMS Messaging API
 
 ## Initialization ##
 

@@ -1,35 +1,12 @@
 # Author: Caden Kroonenberg
 # Date: 11-29-21
 
-import csv
 import data.info as info
 import tweepy
-import os
 import playsound
-import time
 import json
 from datetime import datetime
 import text_client
-
-def fetch_val(file_name):
-    if not os.path.isfile(file_name):
-        raise FileNotFoundError
-    # get date
-    file = open(file_name, "r+")
-    val = file.read()
-    file.close()
-    return val
-
-def overwrite(file_name, val):
-    if not os.path.isfile(file_name):
-        raise FileNotFoundError
-    # Overwrite
-    file = open(file_name, "r+")
-    file.seek(0)
-    file.write(str(val))
-    file.truncate()
-    file.close()
-    return val
 
 # function to add to JSON
 def log(new_data, filename='data/log.json'):
@@ -43,6 +20,7 @@ def log(new_data, filename='data/log.json'):
         # convert back to json.
         json.dump(file_data, file, indent = 4)
 
+# Fetch latest tweet in log
 def fetch_qrt():
     with open("data/log.json",'r+') as file:
         # Load tweet log:
@@ -69,6 +47,7 @@ def remove_line(fileName,lineToSkip):
 	
             currentLine += 1
 
+# Send the next tweet in the queue from tweets.csv and log the tweet in data/log.json.
 def tweet():
     # Init twitter user
     CONSUMER_KEY = info.CONSUMER_KEY
@@ -76,20 +55,9 @@ def tweet():
     ACCESS_KEY = info.ACCESS_KEY
     ACCESS_SECRET = info.ACCESS_SECRET
     BEARER_TOKEN = info.BEARER_TOKEN
-
-    # Your username
-    username = info.USERNAME
-
-    # CSV file where tweets are stored (see sample_actions.csv)
-    tweets = "tweets.csv"
-
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
     auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
-    api = tweepy.API(auth)
     client = tweepy.Client(BEARER_TOKEN, CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET)
-
-    user = client.get_user(username=username)[0]
-    id = user.id
 
     # Fetch QRT ID and tweet text
     qrt_id = fetch_qrt()
@@ -103,13 +71,12 @@ def tweet():
     else: # Quote RT
         tweet = client.create_tweet(text=to_tweet, quote_tweet_id=qrt_id).data
 
+    # Log tweet
     log_entry = {"text": tweet['text'],
      "date-time": str(datetime.now()),
      "id": int(tweet['id']),
      "quote_id": int(qrt_id)
     }
-
-    # Log the tweet
     log(log_entry)
 
     # Remove tweet from tweet queue
